@@ -1,0 +1,12 @@
+# Ignore everything by default
+*
+
+# Allow essential control files
+!.gitignore
+!.gitattributes
+
+# Allow these two directories and everything inside them
+!/footprints/
+!/symbols/
+!/footprints/**
+!/symbols/**
