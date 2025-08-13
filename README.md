@@ -117,3 +117,106 @@ MySQL Workbench provides a convenient GUI for inspecting tables, running queries
 
 5. Save and **Test** the DBLib to confirm the connection works.
 
+ Altium Library & Database Repository
+
+This repository contains the **Altium Designer** binary library files  
+(`.SchLib`, `.PcbLib`) and associated **database files** used for AHS projects.
+
+---
+
+## 1. Clone the Repository
+```bash
+git clone https://github.com/msdayton/AltiumLibraryAHS.git
+cd AltiumLibraryAHS
+```
+
+---
+
+## 2. Repository Structure
+```
+/footprints/   -> PCB footprint libraries (.PcbLib)
+/symbols/      -> Schematic symbol libraries (.SchLib)
+/database/     -> Altium database files (.mdb, .accdb)
+.gitignore     -> Ensures only required files are tracked
+.gitattributes -> Configures Git LFS for binary files
+```
+
+---
+
+## 3. `.gitignore` Configuration
+```gitignore
+# Ignore everything
+*
+
+# Allow essential control files
+!.gitignore
+!.gitattributes
+
+# Allow library and database directories
+!/footprints/
+!/symbols/
+!/database/
+!/footprints/**
+!/symbols/**
+!/database/**
+```
+
+---
+
+## 4. Git LFS Setup for Binary Files
+Install Git LFS:
+```bash
+git lfs install
+```
+
+Track binary file formats:
+```gitattributes
+*.SchDoc filter=lfs diff=lfs merge=lfs -text
+*.PcbDoc filter=lfs diff=lfs merge=lfs -text
+*.SchLib filter=lfs diff=lfs merge=lfs -text
+*.PcbLib filter=lfs diff=lfs merge=lfs -text
+*.mdb filter=lfs diff=lfs merge=lfs -text
+*.accdb filter=lfs diff=lfs merge=lfs -text
+```
+
+---
+
+## 5. Adding and Committing Files
+```bash
+git add .gitignore .gitattributes footprints symbols database
+git commit -m "Initial commit: Add Altium libraries and database files"
+git push origin main
+```
+
+---
+
+## 6. Updating the Repository
+When updating libraries or the database:
+```bash
+git pull
+git add .
+git commit -m "Update Altium library and database"
+git push
+```
+
+---
+
+## 7. Best Practices
+- Keep **branch protection** enabled for `main` to avoid accidental overwrites.
+- Commit only **validated library changes**.
+- Tag releases for known stable versions.
+
+---
+
+## 8. Cloning for Use in Altium
+If you are setting up on a new machine:
+```bash
+git clone https://github.com/msdayton/AltiumLibraryAHS.git
+```
+In Altium:
+1. Go to **Preferences → Data Management → Components**.
+2. Add the `.SchLib` and `.PcbLib` paths from the cloned repo.
+3. Link the database library `.DbLib` or `.SVNDbLib` file to your database DSN.
+
+---
+
