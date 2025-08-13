@@ -78,11 +78,8 @@ $odbcSourcesPath = "HKLM:\SOFTWARE\ODBC\ODBC.INI\ODBC Data Sources"
 Set-ItemProperty -Path $odbcSourcesPath -Name $dsnName -Value "MySQL ODBC 9.4 Unicode Driver"
 
 Write-Host "System DSN '$dsnName' created successfully."
-
+```
 # Setting Up Your Environment for the AHS Altium Database Library
-
----
-
 ## 1. Download and Install MySQL Workbench 8.0 (Optional but Recommended)
 MySQL Workbench provides a convenient GUI for inspecting tables, running queries, and verifying your DSN configuration.
 
@@ -99,73 +96,7 @@ MySQL Workbench provides a convenient GUI for inspecting tables, running queries
      - Provide the same password as used in your DSN setup.
    - Test the connection (should succeed if DSN is set up correctly).
 
----
-
-## 2. Download the MySQL ODBC 9.4 Unicode Driver (Windows 64-bit)
-- Go to: [https://dev.mysql.com/downloads/connector/odbc/](https://dev.mysql.com/downloads/connector/odbc/)
-- Choose the **MySQL Connector/ODBC 9.4** version.
-- Download the **Windows (x86, 64-bit), MSI Installer**.
-- Run the installer and complete a **Typical** install.  
-  The driver will be installed at:
-C:\Program Files\MySQL\MySQL Connector ODBC 9.4\myodbc9w.dll
-
-yaml
-Copy
-Edit
-
----
-
-## 3. Verify Driver Installation
-- Open the **64-bit ODBC Data Source Administrator**:
-C:\Windows\System32\odbcad32.exe
-
-markdown
-Copy
-Edit
-- Go to **Drivers** tab. Confirm:
-MySQL ODBC 9.4 Unicode Driver
-
-bash
-Copy
-Edit
-and ensure the Driver path matches the one above.
-
----
-
-## 4. Create the ODBC System DSN via PowerShell
-Run **PowerShell as Administrator**, then paste and execute:
-
-```powershell
-# Variables
-$dsnName   = "ahs-altium-db-library"
-$driver    = "C:\Program Files\MySQL\MySQL Connector ODBC 9.4\myodbc9w.dll"
-$server    = "ahs-altium-db-library.czenmmkyyzlb.us-west-2.rds.amazonaws.com"
-$database  = "AHS_Library"
-$uid       = "matthew_librarian"
-$pwd       = "YOUR_PASSWORD"
-$port      = "3306"
-$option    = 2067        # Bitmask: No prompt (1) + Dynamic cursor (2) + Found rows (16) + Auto-reconnect (2048)
-$charset   = "utf8mb4"
-
-# Registry key for DSN
-$regPath = "HKLM:\SOFTWARE\ODBC\ODBC.INI\$dsnName"
-New-Item -Path $regPath -Force | Out-Null
-Set-ItemProperty -Path $regPath -Name "Driver"   -Value $driver
-Set-ItemProperty -Path $regPath -Name "SERVER"   -Value $server
-Set-ItemProperty -Path $regPath -Name "DATABASE" -Value $database
-Set-ItemProperty -Path $regPath -Name "UID"      -Value $uid
-Set-ItemProperty -Path $regPath -Name "PWD"      -Value $pwd
-Set-ItemProperty -Path $regPath -Name "PORT"     -Value $port
-Set-ItemProperty -Path $regPath -Name "OPTION"   -Value $option
-Set-ItemProperty -Path $regPath -Name "CHARSET"  -Value $charset
-
-# Register DSN for ODBC Data Sources list
-$odbcSourcesPath = "HKLM:\SOFTWARE\ODBC\ODBC.INI\ODBC Data Sources"
-Set-ItemProperty -Path $odbcSourcesPath -Name $dsnName -Value "MySQL ODBC 9.4 Unicode Driver"
-
-Write-Host "System DSN '$dsnName' created successfully."
-
-## 5. Configure Altium Database Library (DBLib)
+## 2. Configure Altium Database Library (DBLib)
 
 1. In **Altium Designer**, go to:  
    **File → New → Library → Database Library**.
