@@ -1,16 +1,16 @@
 [OutputDatabaseLinkFile]
 Version=1.1
 [DatabaseLinks]
-ConnectionString=
-AddMode=3
+ConnectionString=Provider=MSDASQL.1;Persist Security Info=False;Data Source=ahs-altium-db-library;Initial Catalog=AHS_Library;Found_rows=1;Big_packets=1;No_prompt=1;
+AddMode=2
 RemoveMode=1
 UpdateMode=2
-ViewMode=0
-LeftQuote=[
-RightQuote=]
+ViewMode=1
+LeftQuote=`
+RightQuote=`
 QuoteTableNames=1
 UseTableSchemaName=0
-DefaultColumnType=VARCHAR(255)
+DefaultColumnType=VARCHAR(45)
 LibraryDatabaseType=Microsoft Access
 LibraryDatabasePath=
 DatabasePathRelative=0
@@ -19,3 +19,25 @@ LibrarySearchPath=
 OrcadMultiValueDelimiter=,
 SearchSubDirectories=0
 SchemaName=
+LastFocusedTable=AhsComponent
+[Table1]
+SchemaName=
+TableName=AhsComponent
+Enabled=True
+UserWhere=0
+UserWhereText=
+BrowserOrder_Sorting=
+BrowserOrder_Grouping=
+BrowserOrder_Visible=Description0=254|Part Name0=126|Library Path0=140|Library Ref0=77|Footprint Path0=215|Footprint Ref0=123|Supplier0=66|ComponentLink1URL0=253|ComponentLink2URL0=253|ComponentLink3URL0=253|Supplier Part Number0=180|ComponentLink4URL0=254|Manufacturer0=93|ComponentLink5URL0=253|Manufacturer Part Number0=160|ComponentLink6URL0=253|RoHS0=51|id0=33|Category0=69|Stock0=51|Pricing0=252|ComponentLink1Description0=253|ComponentLink2Description0=253|ComponentLink3Description0=253|ComponentLink4Description0=254|ComponentLink5Description0=253|ComponentLink6Description0=253|Comment0=167
+[FieldMap1]
+Options=FieldName=AhsComponent.Description|TableNameOnly=AhsComponent|FieldNameOnly=Description|FieldType=1|ParameterName=[Description]|VisibleOnAdd=False|AddMode=0|RemoveMode=0|UpdateMode=0
+[FieldMap2]
+Options=FieldName=AhsComponent.Part Name|TableNameOnly=AhsComponent|FieldNameOnly=Part Name|FieldType=0|ParameterName=Part Name|VisibleOnAdd=False|AddMode=0|RemoveMode=0|UpdateMode=0
+[FieldMap3]
+Options=FieldName=AhsComponent.Library Path|TableNameOnly=AhsComponent|FieldNameOnly=Library Path|FieldType=1|ParameterName=[Library Path]|VisibleOnAdd=False|AddMode=0|RemoveMode=0|UpdateMode=0
+[FieldMap4]
+Options=FieldName=AhsComponent.Library Ref|TableNameOnly=AhsComponent|FieldNameOnly=Library Ref|FieldType=1|ParameterName=[Library Ref]|VisibleOnAdd=False|AddMode=0|RemoveMode=0|UpdateMode=0
+[FieldMap5]
+Options=FieldName=AhsComponent.Footprint Path|TableNameOnly=AhsComponent|FieldNameOnly=Footprint Path|FieldType=1|ParameterName=[Footprint Path]|VisibleOnAdd=False|AddMode=0|RemoveMode=0|UpdateMode=0
+[FieldMap6]
+Options=FieldName=AhsComponent.Footprint Ref|TableNameOnly=AhsComponent|FieldNameOnly=Footprint Ref|FieldType=1|ParameterName=[Footprint Ref]|VisibleOnAdd=False|AddMode=0|RemoveMode=0|UpdateMode=0
