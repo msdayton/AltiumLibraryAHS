@@ -1,6 +1,7 @@
 # Ignore everything by default
 *
 
+
 # Allow essential control files
 !.gitignore
 !.gitattributes
@@ -12,3 +13,7 @@
 !/symbols/**
 !*.DbLib
 !*.dblib
+
+# Ignore history directories
+footprints/History/
+symbols/History/
